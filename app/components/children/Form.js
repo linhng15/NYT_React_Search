@@ -7,19 +7,22 @@ var Form = React.createClass({
   // Here we set a generic state associated with the text being searched for
   getInitialState: function() {
     return { 
-      searchTerm: "", 
+      term: "", 
       startYear: "",
       endYear: "" 
      };
   },
 
+
   // This function will respond to the user input
   handleChange: function(event) {
 
-    this.setState({ searchTerm: event.target.value });
-    this.setState({ startYear: event.target.value });
-    this.setState({ endYear: event.target.value });
-
+    this.setState({ 
+      term: event.target.value,
+      startYear: event.target.value,
+      endYear: event.target.value
+     });
+   
   },
 
   // When a user submits...
@@ -29,10 +32,17 @@ var Form = React.createClass({
     event.preventDefault();
 
     // Set the parent to have the search term
-    var title = this.state.searchTerm.trim();
-    var start = this.state.startYear;
-    var end = this.state.endYear;
-    // this.setState({ searchTerm: "" });
+    this.props.setTerm(
+      this.state.term,
+      this.state.startYear,
+      this.state.endYear
+      );
+    //this clear the input field
+    this.setState({ 
+      term: "", 
+      startYear: "",
+      endYear: "" 
+    });
   },
   // Here we describe this component's render method
   render: function() {
@@ -45,8 +55,8 @@ var Form = React.createClass({
           <div className="panel-body text-center">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="topic">title</label>
-                <input type ="text" maxLength = "50" className = "form-control" id="topic" required value={this.state.searchTerm} onChange={this.handleChange} />
+                <label htmlFor="topic">Search Term</label>
+                <input type ="text" maxLength = "50" className = "form-control" id="topic" required value={this.state.term} onChange={this.handleChange} />
               </div>
               <div className = "form-group">
                 <label htmlFor="start-year">Start Year (optional)</label>
@@ -57,12 +67,7 @@ var Form = React.createClass({
                 <input type = "text" maxLength = "4" className = "form control" id="end-year" value={this.state.endYear} onChange={this.handleChange} />
               </div>
               <br />
-              <button
-                className="btn btn-primary"
-                type="submit"
-              >
-                Submit
-              </button>
+              <button type = "submit" id="submit" className = "btn btn-default" onClick={this.handleSubmit}>Search</button>
             </form>
           </div>
         </div>

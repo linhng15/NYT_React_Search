@@ -3,19 +3,18 @@ var axios = require("axios");
 
 // This variable will be pre-programmed with our authentication key
 // (the one we received when we registered)
-var authKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+var apiKey = "5c83be52792b4987abf19bbfa4fb148a";
 
 // Helper functions for making API Calls
 var helper = {
 
   // This function serves our purpose of running the query to NYT.
-  runQuery: function(data) {
+  runQuery: function(searchTerm, startDate, endDate) {
 
-    console.log(data);
-
+    console.log(searchTerm)
     // Figure out the geolocation
     var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-  authKey + "&q=";
+      authKey + "&q=";
     return axios.get(queryURL).then(function(response) {
       // If get get a result, return that result's formatted address property
       if (response.data.results[0]) {
@@ -26,15 +25,15 @@ var helper = {
     });
   },
 
-  // This function hits our own server to retrieve the record of query results
-  getArticles: function() {
-    return axios.get("/api");
-  },
+  // // This function hits our own server to retrieve the record of query results
+  // getArticles: function() {
+  //   return axios.get("/api");
+  // },
 
-  // This function posts new searches to our database.
-  postArticles: function(data) {
-    return axios.post("/api", { data: data });
-  }
+  // // This function posts new searches to our database.
+  // postArticles: function(data) {
+  //   return axios.post("/api", { data: data });
+  // }
 };
 
 // We export the API helper

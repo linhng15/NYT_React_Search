@@ -13,9 +13,9 @@ var History = React.createClass({
         <div className="panel-body text-center">
 
           {/* Here we use a articles function to loop through an array in JSX */}
-          {this.props.history.articles(function(search, i) {
+          {this.props.history.map(function(search, i) {
             return (
-              <p key={i}>{search.title}</p>
+              <p key={i}>{search.searchTerm}</p>
             );
           })}
         </div>

@@ -69,37 +69,37 @@ app.get("/api/saved", function(req, res) {
   });
 });
 
-// This is the route we will send POST requests to save each search.
-app.post("/api/store", function(req, res) {
-  // console.log("BODY: " + req.body.location);
+// // This is the route we will send POST requests to save each search.
+// app.post("/api/store", function(req, res) {
+//   // console.log("BODY: " + req.body.location);
 
-  // // Here we'll save the location based on the JSON input.
-  // // We'll use Date.now() to always get the current date time
-  // Article.create({
-  //   title: req.body.title,
-  //   date: Date.now()
-  // }, function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   else {
-  //     res.send("Saved Search");
-  //   }
-  // });
-});
+//   // // Here we'll save the location based on the JSON input.
+//   // // We'll use Date.now() to always get the current date time
+//   // Article.create({
+//   //   title: req.body.title,
+//   //   date: Date.now()
+//   // }, function(err) {
+//   //   if (err) {
+//   //     console.log(err);
+//   //   }
+//   //   else {
+//   //     res.send("Saved Search");
+//   //   }
+//   // });
+// });
 
-app.post("/api/delete/:id", function(req, res) {
+// app.post("/api/delete/:id", function(req, res) {
   
-  // Article.findOne({"_id: req.params.articleId"
-  // }, function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   else {
-  //     res.send("delete article");
-  //   }
-  // });
-});
+//   // Article.findOne({"_id: req.params.articleId"
+//   // }, function(err) {
+//   //   if (err) {
+//   //     console.log(err);
+//   //   }
+//   //   else {
+//   //     res.send("delete article");
+//   //   }
+//   // });
+// });
 
 // -------------------------------------------------
 
